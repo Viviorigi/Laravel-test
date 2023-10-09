@@ -40,19 +40,3 @@
 .table-action a.label{
 	margin-left: 5px
 }
-.js-add-image {
-	position: relative;
-  }
-  
-  .close-img-button {
-	position: absolute;
-	top: 2;
-	width: 24px;
-	height: 24px;
-	border-radius: 50%;
-	right: 10;
-	cursor: pointer;
-	z-index: 1000;
-	border: 2px solid red;
-	background: white;
-  }

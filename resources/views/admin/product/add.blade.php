@@ -184,7 +184,7 @@ function showImg(input, target) {
             const blobUrl = window.URL.createObjectURL(file)
             output +=
                 `<div class="col-md-3" id="img-add">
-                    <p class="close-img-button text-center close-img-btn">X</p>
+                    
                     <div class="card text-left bg-white border-danger "> 
                         <img class="card-img-bottom" src=${blobUrl} alt="" width="100%" >
                     </div>
@@ -192,9 +192,7 @@ function showImg(input, target) {
             })
             document.getElementById('imgs').innerHTML += output
         }
-        $('body').on('click', ".close-img-btn", function (e) {
-    $(this).parent().remove();
-});
+
 
     </script>
 @endsection
