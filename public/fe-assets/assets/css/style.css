@@ -16413,3 +16413,19 @@ i.wishlist-empty {
     margin-bottom: 50px;
   }
 }
+.js-add-image {
+  position: relative;
+}
+
+.close-img-button {
+  position: absolute;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  right: 0;
+  cursor: pointer;
+  z-index: 1000;
+  border: 2px solid red;
+  background: #000;
+}

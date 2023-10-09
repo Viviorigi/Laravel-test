@@ -69,7 +69,10 @@
                           <div class="form-group">
                             <label for="exampleInputEmail1">Chọn Ảnh</label>
                             <div class="box pt-2">                        
-                                <input type="file" name="photo" id="input " value="{{old('photo')}}" >                                              
+                                <input type="file" name="photo" id="input " value="{{old('photo')}}" onchange="showImg(this,'img')">                                              
+                            </div>
+                            <div >
+                              <img id="img" src="" alt="" width="300px">
                             </div>
                             @error('photo')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -80,7 +83,10 @@
                           <div class="form-group">
                             <label for="exampleInputEmail1">Chọn Ảnh Mô tả</label>
                             <div class="box pt-2">                        
-                                <input type="file" name="photos[]" id="input " multiple >                                              
+                                <input type="file" name="photos[]" id="input " multiple onchange="preview(this)">                                              
+                            </div>
+                            <div class="row" id="imgs">
+                              
                             </div>
                             @error('photos')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -160,6 +166,35 @@ function ChangeToSlug()
     document.getElementById('slug').value = slug;
 }
 
+function showImg(input, target) {
+        let file = input.files[0];
+        let reader = new FileReader();
+
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+            let img = document.getElementById(target);
+            // can also use "this.result"
+            img.src = reader.result;
+        }
+    }
+
+    function preview(elem, output = '') {
+        const i = 0;
+        Array.from(elem.files).map((file) => {
+            const blobUrl = window.URL.createObjectURL(file)
+            output +=
+                `<div class="col-md-3" id="img-add">
+                    <p class="close-img-button text-center close-img-btn">X</p>
+                    <div class="card text-left bg-white border-danger "> 
+                        <img class="card-img-bottom" src=${blobUrl} alt="" width="100%" >
+                    </div>
+                </div>`
+            })
+            document.getElementById('imgs').innerHTML += output
+        }
+        $('body').on('click', ".close-img-btn", function (e) {
+    $(this).parent().remove();
+});
 
     </script>
 @endsection

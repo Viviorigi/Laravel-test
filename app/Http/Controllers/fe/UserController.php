@@ -16,7 +16,7 @@ class UserController extends Controller
         return view('fe.register');
     }
     public function create(Request $req) {
-      
+        
         $req->merge(['password'=>Hash::make($req->password)]);
        
         try {
@@ -24,6 +24,7 @@ class UserController extends Controller
             return redirect()->route('login');
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th);
         }
         
     }
